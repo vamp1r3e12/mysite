@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>for YOUUU!!!! 💗</title>
+
+<style>
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #ffd6e8;
+    overflow: hidden;
+}
+
+h1 {
+    margin-top: 40px;
+    font-size: 32px;
+    color: #ff4d88;
+}
+
+img {
+    width: 250px;
+    margin: 20px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yes {
+    background-color: #ff4d88;
+    color: white;
+    animation: pulse 1s infinite;
+}
+
+#no {
+    background-color: #cccccc;
+}
+
+#bigImage {
+    display: none;
+    width: 320px;
+    margin-top: 20px;
+}
+
+/* Пульсация */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Падающие сердечки */
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.heart {
+    position: fixed;
+    color: #ff4d88;
+    font-size: 20px;
+    animation: float 4s linear infinite;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Будешь моей валентиночкой? 💘</h1>
+
+<!-- ПЕРВАЯ ГИФКА -->
+<img src="https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyNmFxYnFmZml4ZXNmdWNoZjVnbXFmNnZmN3ZwaXV4ZmYyZzZ3MDM4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dn1a0VcUj2AOLOQn8P/giphy.gif" 
+
+<div class="buttons">
+    <button id="yes">Да!!! 💖</button>
+    <button id="no">Нет :_(</button>
+</div>
+
+<!-- ВТОРАЯ ГИФКА -->
+<img id="bigImage" src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyNmc0a2h4eTQ3Zmk0d3A5amlweGY2djg1am9haGs4czczbTNuMnpidiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eO3A855pbMbS9mZkme/giphy.gif"
+
+<script>
+let yesButton = document.getElementById("yes");
+let noButton = document.getElementById("no");
+let bigImage = document.getElementById("bigImage");
+let firstImage = document.querySelector("img");
+let buttons = document.querySelector(".buttons");
+
+let yesSize = 20;
+let noSize = 20;
+
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
+}
+
+setInterval(createHeart, 500);
+
+noButton.addEventListener("click", function() {
+    yesSize += 10;
+    noSize -= 3;
+
+    yesButton.style.fontSize = yesSize + "px";
+    noButton.style.fontSize = noSize + "px";
+
+    if (noSize <= 5) {
+        noButton.style.display = "none";
+    }
+});
+
+yesButton.addEventListener("click", function() {
+    document.querySelector("h1").innerText = "ХЫХЫХ, я знала что ты не откажешь ;3 💞💞💞";
+
+    firstImage.style.display = "none";
+    buttons.style.display = "none";
+    bigImage.style.display = "block";
+
+    for (let i = 0; i < 30; i++) {
+        createHeart();
+    }
+});
+</script>
+
+</body>
+</html>
